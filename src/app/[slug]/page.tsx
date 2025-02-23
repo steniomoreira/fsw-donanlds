@@ -9,7 +9,7 @@ interface RestaurantPageProps {
   params: Promise<{ slug: string }>;
 }
 
-async function Restaurantpage({ params }: RestaurantPageProps) {
+async function RestaurantPage({ params }: RestaurantPageProps) {
   const { slug } = await params;
 
   const restaurant = await getRestaurantBySlug(slug);
@@ -60,4 +60,4 @@ async function Restaurantpage({ params }: RestaurantPageProps) {
   );
 }
 
-export default Restaurantpage;
+export default RestaurantPage;
