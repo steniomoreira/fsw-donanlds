@@ -9,7 +9,7 @@ import {
 import { useCartContext } from "../hooks/useCartContext";
 
 function CartSheet() {
-  const { isOpen, toggleCart } = useCartContext();
+  const { isOpen, toggleCart, products } = useCartContext();
 
   return (
     <Sheet open={isOpen} onOpenChange={toggleCart}>
@@ -17,8 +17,11 @@ function CartSheet() {
         <SheetHeader>
           <SheetTitle>Are you absolutely sure?</SheetTitle>
           <SheetDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+            {products.map((product) => (
+              <h1 key={product.id}>
+                {product.name} {product.quantity}
+              </h1>
+            ))}
           </SheetDescription>
         </SheetHeader>
       </SheetContent>
