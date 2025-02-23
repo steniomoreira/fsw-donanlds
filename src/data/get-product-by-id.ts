@@ -1,7 +1,7 @@
 import { db } from "@/lib/prisma";
 
 export const getProductById = async (id: string) => {
-  const product = await db.product.findUnique({
+  const product = await db.product.findFirst({
     where: { id },
     include: {
       restaurant: {
