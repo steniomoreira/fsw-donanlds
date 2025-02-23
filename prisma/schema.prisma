@@ -40,7 +40,7 @@ model Product {
   id            String         @id @default(uuid())
   name          String
   description   String
-  price         Decimal        @db.Decimal(10, 2)
+  price         Float
   imageUrl      String
   ingredients   String[]
   orderProducts OrderProduct[]
@@ -58,7 +58,7 @@ model Product {
 
 model Order {
   id                Int               @id @default(autoincrement())
-  total             Decimal           @db.Decimal(10, 2)
+  total             Float
   status            OrderStatus
   consumptionMethod ConsumptionMethod
   orderProducts     OrderProduct[]
@@ -74,7 +74,7 @@ model Order {
 model OrderProduct {
   id        String   @id @default(uuid())
   quantity  Int
-  price     Decimal  @db.Decimal(10, 2)
+  price     Float
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
