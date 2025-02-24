@@ -5,12 +5,15 @@ import { Button } from "@/components/ui/button";
 import { formatCurrency } from "@/helpers/format-currency";
 
 import { CartProduct } from "../context/cart";
+import { useCartContext } from "../hooks/useCartContext";
 
 interface CartProductItemProps {
   product: CartProduct;
 }
 
 function CartProductItem({ product }: CartProductItemProps) {
+  const { decreaseProducQuantity } = useCartContext();
+
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-3">
@@ -26,7 +29,11 @@ function CartProductItem({ product }: CartProductItemProps) {
           </p>
 
           <div className="flex items-center gap-1 text-center">
-            <Button variant="outline" className="h-7 w-7 rounded-lg">
+            <Button
+              variant="outline"
+              className="h-7 w-7 rounded-lg"
+              onClick={() => decreaseProducQuantity(product.id)}
+            >
               <ChevronLeftIcon />
             </Button>
             <p className="w-7 text-xs">{product.quantity}</p>
