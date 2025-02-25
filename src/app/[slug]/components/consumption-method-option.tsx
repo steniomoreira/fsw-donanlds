@@ -32,7 +32,7 @@ function ConsumptionMethodOptions({
           />
         </div>
         <Button variant="secondary" className="rounded-full" asChild>
-          <Link href={`${slug}/menu?consumptionMethos=${option}`}>
+          <Link href={`${slug}/menu?consumptionMethod=${option}`}>
             {buttonText}
           </Link>
         </Button>
