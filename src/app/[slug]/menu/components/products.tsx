@@ -5,6 +5,8 @@ import { useParams, useSearchParams } from "next/navigation";
 
 import { formatCurrency } from "@/helpers/format-currency";
 
+import { useCartContext } from "../hooks/useCartContext";
+
 interface ProductsProps {
   products: Product[];
 }
@@ -14,8 +16,9 @@ function Products({ products }: ProductsProps) {
   const searchParams = useSearchParams();
   const consumptionMethod = searchParams.get("consumptionMethod");
 
+  const { products: cartProducts } = useCartContext();
   return (
-    <div className="space-y-3 px-5">
+    <div className={`space-y-3 px-5 ${cartProducts.length > 0 && "pb-16"} `}>
       {products.map((product) => (
         <Link
           key={product.id}

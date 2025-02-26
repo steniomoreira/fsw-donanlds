@@ -51,7 +51,7 @@ function CpfForm() {
   });
 
   function onSubmit(data: FormSchema) {
-    router.push(`${pathname}?cpf=${removeCpfPunctuation(data.cpf)}`);
+    router.replace(`${pathname}?cpf=${removeCpfPunctuation(data.cpf)}`);
   }
 
   function handleCancel() {
